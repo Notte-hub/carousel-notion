@@ -8,8 +8,8 @@
         /* Contenitore del carosello */
         .carousel {
             width: 100%;
-            max-width: 1080px; /* Limita la larghezza massima del carosello */
-            height: 1200px; /* Imposta un'altezza fissa, metà della dimensione originale */
+            max-width: 800px; /* Limita la larghezza massima del carosello */
+            height: 600px; /* Imposta un'altezza fissa */
             overflow: hidden; /* Nasconde le immagini fuori dall'area visibile */
             margin: auto; /* Centra il carosello nella pagina */
             border-radius: 10px; /* Arrotonda leggermente gli angoli */
@@ -20,13 +20,13 @@
         .carousel-inner {
             display: flex; /* Dispone le immagini in riga */
             transition: transform 0.5s ease; /* Transizione per scorrere in modo fluido */
-            width: 300%; /* Larghezza totale del carosello, per le 3 immagini */
+            width: 100%; /* La larghezza del contenitore è 100% */
         }
 
         /* Stile delle immagini nel carosello */
         .carousel img {
-            width: 50%; /* Ogni immagine occupa il 50% della larghezza del carosello */
-            height: auto; /* Mantiene le proporzioni originali */
+            width: 100%; /* Ogni immagine occupa il 100% della larghezza del carosello */
+            height: 100%; /* Le immagini occupano tutta l'altezza del carosello */
             object-fit: contain; /* Rende l'immagine visibile completamente senza distorcere */
         }
 
@@ -60,7 +60,7 @@
     <div class="carousel">
         <div class="carousel-inner">
             <!-- Lista delle immagini nel carosello -->
-            <img src="https://wiki-sternenergy.notion.site/image/attachment%3A4012ffd5-0968-443e-80ed-2d852ce30dd4%3AIMG-20250308-WA0023.jpg?table=block&id=1b01c509-ecd5-80dc-9989-cde0a716c34b&spaceId=7b918fb7-eb11-4841-8deb-7a550074afee&width=1420&userId=&cache=v2" />
+             <img src="https://wiki-sternenergy.notion.site/image/attachment%3A4012ffd5-0968-443e-80ed-2d852ce30dd4%3AIMG-20250308-WA0023.jpg?table=block&id=1b01c509-ecd5-80dc-9989-cde0a716c34b&spaceId=7b918fb7-eb11-4841-8deb-7a550074afee&width=1420&userId=&cache=v2" />
             <img src="https://wiki-sternenergy.notion.site/image/attachment%3A99d88fd8-6586-4fc0-8df5-98f9ccb10fe8%3AIMG-20250308-WA0022.jpg?table=block&id=1b01c509-ecd5-80c0-93b1-d09196c75c76&spaceId=7b918fb7-eb11-4841-8deb-7a550074afee&width=1420&userId=&cache=v2" />
             <img src="https://wiki-sternenergy.notion.site/image/attachment%3Aa987d229-7f99-4fb9-8440-f7cff8d26380%3AIMG-20250308-WA0021.jpg?table=block&id=1b01c509-ecd5-8098-9f85-e9400e73d762&spaceId=7b918fb7-eb11-4841-8deb-7a550074afee&width=1420&userId=&cache=v2" />
         </div>
