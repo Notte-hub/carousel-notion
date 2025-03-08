@@ -4,56 +4,54 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Carosello Manuale</title>
-    
     <style>
         /* Contenitore del carosello */
         .carousel {
-            width: 100%; 
-            max-width: 720px; /* Limita la larghezza massima del carosello alla larghezza dell'immagine */
-            height: auto; /* Imposta l'altezza in base alla larghezza */
+            width: 100%;
+            max-width: 800px; /* Limita la larghezza massima del carosello */
+            height: 600px; /* Imposta una altezza fissa */
             overflow: hidden; /* Nasconde le immagini fuori dall'area visibile */
             margin: auto; /* Centra il carosello nella pagina */
-            position: relative; /* Necessario per i pulsanti di navigazione */
             border-radius: 10px; /* Arrotonda leggermente gli angoli */
+            position: relative; /* Necessario per la posizione dei controlli */
         }
 
         /* Contenitore interno che contiene tutte le immagini in fila */
         .carousel-inner {
             display: flex; /* Dispone le immagini in riga */
-            width: 300%; /* Il contenitore è largo 3 volte la dimensione del carosello, perché contiene 3 immagini */
-            transition: transform 0.5s ease-in-out; /* Aggiunge transizione per lo scorrimento delle immagini */
+            transition: transform 0.5s ease; /* Transizione per scorrere in modo fluido */
         }
 
         /* Stile delle immagini nel carosello */
         .carousel img {
             width: 100%; /* Ogni immagine occupa il 100% della larghezza del carosello */
-            height: auto; /* L'altezza si adatta proporzionalmente alla larghezza */
-            object-fit: contain; /* Mantiene le proporzioni originali senza tagliarle */
+            height: 100%; /* Le immagini occupano tutta l'altezza del carosello */
+            object-fit: cover; /* Riempi il carosello senza distorcere l'immagine */
         }
 
-        /* Pulsanti di navigazione (freccia) */
-        .prev, .next {
+        /* Controlli per navigare */
+        .carousel-control-prev, .carousel-control-next {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
             background-color: rgba(0, 0, 0, 0.5);
             color: white;
+            font-size: 2rem;
+            padding: 0 10px;
             border: none;
-            padding: 10px;
             cursor: pointer;
             z-index: 10;
         }
 
-        .prev {
+        .carousel-control-prev {
             left: 10px;
         }
 
-        .next {
+        .carousel-control-next {
             right: 10px;
         }
 
     </style>
-
 </head>
 <body>
 
@@ -65,46 +63,39 @@
             <img src="https://images1.vinted.net/t/04_02448_5DnCHa2GGkxT3XSX47dqzjww/f800/1739551753.jpeg?s=91ffd1b3b97adf945e98e135dc0ae8bec38ee43c" />
             <img src="https://images1.vinted.net/t/04_00b93_btvwqL11tioRP6YFHhsHVd47/f800/1741005154.jpeg?s=2ddb8302312d4b1f75ca48e91678ded17e89c305" />
         </div>
-
-        <!-- Freccia sinistra -->
-        <button class="prev">&#10094;</button>
-        <!-- Freccia destra -->
-        <button class="next">&#10095;</button>
+        <!-- Controllo per la freccia sinistra -->
+        <button class="carousel-control-prev">&#10094;</button>
+        <!-- Controllo per la freccia destra -->
+        <button class="carousel-control-next">&#10095;</button>
     </div>
 
     <script>
-        // Otteniamo gli elementi necessari
-        const prevButton = document.querySelector('.prev');
-        const nextButton = document.querySelector('.next');
-        const carouselInner = document.querySelector('.carousel-inner');
-        
-        // Variabile per tracciare l'indice dell'immagine corrente
+        // Variabili per i controlli
         let currentIndex = 0;
+        const images = document.querySelectorAll(".carousel img");
+        const totalImages = images.length;
+        const carouselInner = document.querySelector(".carousel-inner");
 
-        // Funzione per aggiornare il carosello
-        function updateCarousel() {
-            const offset = -currentIndex * 100; // Calcola lo spostamento in base all'indice
-            carouselInner.style.transform = `translateX(${offset}%)`; // Applica lo spostamento
+        // Funzione per cambiare l'immagine
+        function showImage(index) {
+            if (index >= totalImages) {
+                currentIndex = 0;
+            } else if (index < 0) {
+                currentIndex = totalImages - 1;
+            } else {
+                currentIndex = index;
+            }
+            carouselInner.style.transform = `translateX(-${currentIndex * 100}%)`;
         }
 
-        // Funzione per passare all'immagine precedente
-        prevButton.addEventListener('click', () => {
-            if (currentIndex > 0) {
-                currentIndex--;
-            } else {
-                currentIndex = 2; // Torna all'ultima immagine se si è alla prima
-            }
-            updateCarousel();
+        // Event listener per la freccia sinistra
+        document.querySelector(".carousel-control-prev").addEventListener("click", function() {
+            showImage(currentIndex - 1);
         });
 
-        // Funzione per passare all'immagine successiva
-        nextButton.addEventListener('click', () => {
-            if (currentIndex < 2) {
-                currentIndex++;
-            } else {
-                currentIndex = 0; // Torna alla prima immagine se si è all'ultima
-            }
-            updateCarousel();
+        // Event listener per la freccia destra
+        document.querySelector(".carousel-control-next").addEventListener("click", function() {
+            showImage(currentIndex + 1);
         });
     </script>
 
