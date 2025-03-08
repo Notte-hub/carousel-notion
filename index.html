@@ -6,8 +6,9 @@
     <title>Carosello</title>
     <style>
         .carousel {
-    width: 100%; /* Occupa tutta la larghezza del contenitore */
-    max-width: 600px; /* Mantiene la grandezza originale */
+    width: 100%; 
+    max-width: 600px; /* Regola la dimensione massima */
+    height: auto;
     overflow: hidden;
     margin: auto;
     border-radius: 10px;
@@ -19,9 +20,9 @@
 }
 .carousel img {
     width: 100%;
-    height: auto; /* Mantiene le proporzioni originali */
+    max-height: 400px; /* Regola l'altezza per evitare che si allarghino troppo */
     flex: 1 0 100%;
-    object-fit: contain; /* Evita il ritaglio e lo zoom */
+    object-fit: cover; /* Mostra l'immagine come nel link, senza deformazioni */
 }
 @keyframes slide {
     0%, 33% { transform: translateX(0); }
