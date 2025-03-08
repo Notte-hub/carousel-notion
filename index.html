@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carosello</title>
+    <style>
+        .carousel {
+            width: 100%; /* Grandezza originale */
+            max-width: 600px; /* Regola la dimensione massima */
+            overflow: hidden;
+            margin: auto;
+            border-radius: 10px;
+        }
+        .carousel-inner {
+            display: flex;
+            width: 300%; /* 3 immagini */
+            animation: slide 3s infinite; /* Totale 3 secondi (1 secondo per immagine) */
+        }
+        .carousel img {
+            width: 100%;
+            flex: 1 0 100%;
+            object-fit: cover;
+        }
+        @keyframes slide {
+            0%, 33% { transform: translateX(0); }
+            34%, 66% { transform: translateX(-100%); }
+            67%, 100% { transform: translateX(-200%); }
+        }
+    </style>
+</head>
+<body>
+    <div class="carousel">
+        <div class="carousel-inner">
+            <img src="https://images1.vinted.net/t/04_02206_A65iPQa1CVtvhyD7sSSFQ642/f800/1739552397.jpeg?s=c770c21fdc5854ce86b90bd84c8b2f58d78d56cb" />
+            <img src="https://images1.vinted.net/t/04_02448_5DnCHa2GGkxT3XSX47dqzjww/f800/1739551753.jpeg?s=91ffd1b3b97adf945e98e135dc0ae8bec38ee43c" />
+            <img src="https://images1.vinted.net/t/04_00b93_btvwqL11tioRP6YFHhsHVd47/f800/1741005154.jpeg?s=2ddb8302312d4b1f75ca48e91678ded17e89c305" />
+        </div>
+    </div>
+</body>
+</html>
