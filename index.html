@@ -9,8 +9,8 @@
         /* Contenitore del carosello */
         .carousel {
             width: 100%; 
-            max-width: 600px; /* Limita la larghezza massima del carosello */
-            height: auto;
+            max-width: 720px; /* Limita la larghezza massima del carosello alla larghezza dell'immagine */
+            height: auto; /* Imposta l'altezza in base alla larghezza */
             overflow: hidden; /* Nasconde le immagini fuori dall'area visibile */
             margin: auto; /* Centra il carosello nella pagina */
             border-radius: 10px; /* Arrotonda leggermente gli angoli */
@@ -25,10 +25,9 @@
 
         /* Stile delle immagini nel carosello */
         .carousel img {
-            width: 100%; /* Ogni immagine occupa il 33,33% della larghezza del carosello */ 
-            max-height: 600px; /* Limita l'altezza per mantenere proporzioni corrette */
-            flex: 1 0 100%; /* Assicura che ogni immagine abbia la stessa dimensione */
-            object-fit: cover; /* Fa sì che l'immagine si adatti al contenitore senza essere ritagliata */
+            width: 100%; /* Ogni immagine occupa il 100% della larghezza del carosello */
+            height: auto; /* L'altezza si adatta proporzionalmente alla larghezza */
+            object-fit: contain; /* Mantiene le proporzioni originali senza tagliarle */
         }
 
         /* Animazione per scorrere le immagini automaticamente */
