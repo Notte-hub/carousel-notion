@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carosello</title>
+    <title>Carosello Manuale</title>
     
     <style>
         /* Contenitore del carosello */
@@ -13,6 +13,7 @@
             height: auto; /* Imposta l'altezza in base alla larghezza */
             overflow: hidden; /* Nasconde le immagini fuori dall'area visibile */
             margin: auto; /* Centra il carosello nella pagina */
+            position: relative; /* Necessario per i pulsanti di navigazione */
             border-radius: 10px; /* Arrotonda leggermente gli angoli */
         }
 
@@ -20,7 +21,7 @@
         .carousel-inner {
             display: flex; /* Dispone le immagini in riga */
             width: 300%; /* Il contenitore è largo 3 volte la dimensione del carosello, perché contiene 3 immagini */
-            animation: slide 9s infinite; /* Cambiato per 9s (3s per immagine) */
+            transition: transform 0.5s ease-in-out; /* Aggiunge transizione per lo scorrimento delle immagini */
         }
 
         /* Stile delle immagini nel carosello */
@@ -30,13 +31,27 @@
             object-fit: contain; /* Mantiene le proporzioni originali senza tagliarle */
         }
 
-        /* Animazione per scorrere le immagini automaticamente */
-        @keyframes slide {
-            0%, 20% { transform: translateX(0); } /* Mostra la prima immagine per il 20% della durata */
-            33%, 53% { transform: translateX(-100%); } /* Mostra la seconda immagine per il 20% della durata */
-            66%, 86% { transform: translateX(-200%); } /* Mostra la terza immagine per il 20% della durata */
-            100% { transform: translateX(0); } /* Ripristina la posizione iniziale per il loop */
+        /* Pulsanti di navigazione (freccia) */
+        .prev, .next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            z-index: 10;
         }
+
+        .prev {
+            left: 10px;
+        }
+
+        .next {
+            right: 10px;
+        }
+
     </style>
 
 </head>
@@ -50,7 +65,48 @@
             <img src="https://images1.vinted.net/t/04_02448_5DnCHa2GGkxT3XSX47dqzjww/f800/1739551753.jpeg?s=91ffd1b3b97adf945e98e135dc0ae8bec38ee43c" />
             <img src="https://images1.vinted.net/t/04_00b93_btvwqL11tioRP6YFHhsHVd47/f800/1741005154.jpeg?s=2ddb8302312d4b1f75ca48e91678ded17e89c305" />
         </div>
+
+        <!-- Freccia sinistra -->
+        <button class="prev">&#10094;</button>
+        <!-- Freccia destra -->
+        <button class="next">&#10095;</button>
     </div>
+
+    <script>
+        // Otteniamo gli elementi necessari
+        const prevButton = document.querySelector('.prev');
+        const nextButton = document.querySelector('.next');
+        const carouselInner = document.querySelector('.carousel-inner');
+        
+        // Variabile per tracciare l'indice dell'immagine corrente
+        let currentIndex = 0;
+
+        // Funzione per aggiornare il carosello
+        function updateCarousel() {
+            const offset = -currentIndex * 100; // Calcola lo spostamento in base all'indice
+            carouselInner.style.transform = `translateX(${offset}%)`; // Applica lo spostamento
+        }
+
+        // Funzione per passare all'immagine precedente
+        prevButton.addEventListener('click', () => {
+            if (currentIndex > 0) {
+                currentIndex--;
+            } else {
+                currentIndex = 2; // Torna all'ultima immagine se si è alla prima
+            }
+            updateCarousel();
+        });
+
+        // Funzione per passare all'immagine successiva
+        nextButton.addEventListener('click', () => {
+            if (currentIndex < 2) {
+                currentIndex++;
+            } else {
+                currentIndex = 0; // Torna alla prima immagine se si è all'ultima
+            }
+            updateCarousel();
+        });
+    </script>
 
 </body>
 </html>
