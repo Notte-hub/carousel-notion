@@ -32,9 +32,10 @@
 
         /* Animazione per scorrere le immagini automaticamente */
         @keyframes slide {
-            0%, 33.33% { transform: translateX(0); } /* Mostra la prima immagine */
-            33.34%, 66.66% { transform: translateX(-100%); } /* Sposta alla seconda immagine */
-            66.67%, 100% { transform: translateX(-200%); } /* Sposta alla terza immagine */
+            0%, 20% { transform: translateX(0); } /* Mostra la prima immagine per il 20% della durata */
+            33%, 53% { transform: translateX(-100%); } /* Mostra la seconda immagine per il 20% della durata */
+            66%, 86% { transform: translateX(-200%); } /* Mostra la terza immagine per il 20% della durata */
+            100% { transform: translateX(0); } /* Ripristina la posizione iniziale per il loop */
         }
     </style>
 
