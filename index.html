@@ -8,8 +8,8 @@
         /* Contenitore del carosello */
         .carousel {
             width: 100%;
-            max-width: 800px; /* Limita la larghezza massima del carosello */
-            height: 600px; /* Imposta un'altezza fissa */
+            max-width: 1080px; /* Limita la larghezza massima del carosello */
+            height: 1200px; /* Imposta un'altezza fissa, metà della dimensione originale */
             overflow: hidden; /* Nasconde le immagini fuori dall'area visibile */
             margin: auto; /* Centra il carosello nella pagina */
             border-radius: 10px; /* Arrotonda leggermente gli angoli */
@@ -20,13 +20,13 @@
         .carousel-inner {
             display: flex; /* Dispone le immagini in riga */
             transition: transform 0.5s ease; /* Transizione per scorrere in modo fluido */
-            width: 100%; /* La larghezza del contenitore è 100% */
+            width: 300%; /* Larghezza totale del carosello, per le 3 immagini */
         }
 
         /* Stile delle immagini nel carosello */
         .carousel img {
-            width: 100%; /* Ogni immagine occupa il 100% della larghezza del carosello */
-            height: 100%; /* Le immagini occupano tutta l'altezza del carosello */
+            width: 50%; /* Ogni immagine occupa il 50% della larghezza del carosello */
+            height: auto; /* Mantiene le proporzioni originali */
             object-fit: contain; /* Rende l'immagine visibile completamente senza distorcere */
         }
 
