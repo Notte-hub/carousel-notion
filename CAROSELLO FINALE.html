@@ -26,7 +26,7 @@
         .carousel img {
             width: 100%; /* Ogni immagine occupa il 100% della larghezza del carosello */
             height: 100%; /* Le immagini occupano tutta l'altezza del carosello */
-            object-fit: cover; /* Riempi il carosello senza distorcere l'immagine */
+            object-fit: contain; /* Mantiene la proporzione e adatta l'immagine al contenitore senza distorcere */
         }
 
         /* Controlli per navigare */
@@ -85,7 +85,7 @@
             } else {
                 currentIndex = index;
             }
-            carouselInner.style.transform = translateX(-${currentIndex * 100}%);
+            carouselInner.style.transform = `translateX(-${currentIndex * 100}%)`;
         }
 
         // Event listener per la freccia sinistra
