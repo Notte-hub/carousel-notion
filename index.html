@@ -4,40 +4,53 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Carosello</title>
+    
     <style>
+        /* Contenitore del carosello */
         .carousel {
-    width: 100%; 
-    max-width: 600px; /* Regola la dimensione massima */
-    height: auto;
-    overflow: hidden;
-    margin: auto;
-    border-radius: 10px;
-}
-.carousel-inner {
-    display: flex;
-    width: 300%; /* 3 immagini */
-    animation: slide 3s infinite; /* Cambia immagine ogni secondo */
-}
-.carousel img {
-    width: 100%;
-    max-height: 400px; /* Regola l'altezza per evitare che si allarghino troppo */
-    flex: 1 0 100%;
-    object-fit: cover; /* Mostra l'immagine come nel link, senza deformazioni */
-}
-@keyframes slide {
-    0%, 33% { transform: translateX(0); }
-    34%, 66% { transform: translateX(-100%); }
-    67%, 100% { transform: translateX(-200%); }
-}
+            width: 100%; 
+            max-width: 600px; /* Limita la larghezza massima del carosello */
+            height: auto;
+            overflow: hidden; /* Nasconde le immagini fuori dall'area visibile */
+            margin: auto; /* Centra il carosello nella pagina */
+            border-radius: 10px; /* Arrotonda leggermente gli angoli */
+        }
+
+        /* Contenitore interno che contiene tutte le immagini in fila */
+        .carousel-inner {
+            display: flex; /* Dispone le immagini in riga */
+            width: 300%; /* Il contenitore è largo 3 volte la dimensione del carosello, perché contiene 3 immagini */
+            animation: slide 9s infinite; /* Cambiato per 9s (3s per immagine) */
+        }
+
+        /* Stile delle immagini nel carosello */
+        .carousel img {
+            width: 33.33%; /* Ogni immagine occupa il 33,33% della larghezza del carosello */
+            max-height: 400px; /* Limita l'altezza per mantenere proporzioni corrette */
+            flex: 1 0 100%; /* Assicura che ogni immagine abbia la stessa dimensione */
+            object-fit: cover; /* Fa sì che l'immagine riempia il riquadro senza distorsioni */
+        }
+
+        /* Animazione per scorrere le immagini automaticamente */
+        @keyframes slide {
+            0%, 33.33% { transform: translateX(0); } /* Mostra la prima immagine */
+            33.34%, 66.66% { transform: translateX(-100%); } /* Sposta alla seconda immagine */
+            66.67%, 100% { transform: translateX(-200%); } /* Sposta alla terza immagine */
+        }
     </style>
+
 </head>
 <body>
+
+    <!-- Contenitore del carosello -->
     <div class="carousel">
         <div class="carousel-inner">
+            <!-- Lista delle immagini nel carosello -->
             <img src="https://images1.vinted.net/t/04_02206_A65iPQa1CVtvhyD7sSSFQ642/f800/1739552397.jpeg?s=c770c21fdc5854ce86b90bd84c8b2f58d78d56cb" />
             <img src="https://images1.vinted.net/t/04_02448_5DnCHa2GGkxT3XSX47dqzjww/f800/1739551753.jpeg?s=91ffd1b3b97adf945e98e135dc0ae8bec38ee43c" />
             <img src="https://images1.vinted.net/t/04_00b93_btvwqL11tioRP6YFHhsHVd47/f800/1741005154.jpeg?s=2ddb8302312d4b1f75ca48e91678ded17e89c305" />
         </div>
     </div>
+
 </body>
 </html>
