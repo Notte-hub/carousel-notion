@@ -6,27 +6,28 @@
     <title>Carosello</title>
     <style>
         .carousel {
-            width: 100%; /* Grandezza originale */
-            max-width: 600px; /* Regola la dimensione massima */
-            overflow: hidden;
-            margin: auto;
-            border-radius: 10px;
-        }
-        .carousel-inner {
-            display: flex;
-            width: 300%; /* 3 immagini */
-            animation: slide 3s infinite; /* Totale 3 secondi (1 secondo per immagine) */
-        }
-        .carousel img {
-            width: 100%;
-            flex: 1 0 100%;
-            object-fit: cover;
-        }
-        @keyframes slide {
-            0%, 33% { transform: translateX(0); }
-            34%, 66% { transform: translateX(-100%); }
-            67%, 100% { transform: translateX(-200%); }
-        }
+    width: 100%; /* Occupa tutta la larghezza del contenitore */
+    max-width: 600px; /* Mantiene la grandezza originale */
+    overflow: hidden;
+    margin: auto;
+    border-radius: 10px;
+}
+.carousel-inner {
+    display: flex;
+    width: 300%; /* 3 immagini */
+    animation: slide 3s infinite; /* Cambia immagine ogni secondo */
+}
+.carousel img {
+    width: 100%;
+    height: auto; /* Mantiene le proporzioni originali */
+    flex: 1 0 100%;
+    object-fit: contain; /* Evita il ritaglio e lo zoom */
+}
+@keyframes slide {
+    0%, 33% { transform: translateX(0); }
+    34%, 66% { transform: translateX(-100%); }
+    67%, 100% { transform: translateX(-200%); }
+}
     </style>
 </head>
 <body>
